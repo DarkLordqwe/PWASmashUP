@@ -63,22 +63,7 @@
 		"name": "Университет Мискатоник",
 		"icon": "https://static.wikia.nocookie.net/smashup/images/0/02/Miskatonic_University-0.png"
 	},
-	{
-		"name": "Киборг-обезьяны",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/4/4f/Cyborg_Apes.png"
-	},
-	{
-		"name": "Шейпшифтеры",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/7/74/Shapeshifters.png"
-	},
-	{
-		"name": "Супершпионы",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/3/3e/Super_Spies.png"
-	},
-	{
-		"name": "Путешественники во времени",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/e/e8/Time_Travelers.png"
-	},
+
 	{
 		"name": "Гигантские муравьи",
 		"icon": "https://static.wikia.nocookie.net/smashup/images/c/c6/Giant_Ants-0.png"
@@ -111,38 +96,7 @@
 		"name": "Принцессы",
 		"icon": "https://static.wikia.nocookie.net/smashup/images/a/a6/Princesses.png"
 	},
-	{
-		"name": "Клирики",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/4/49/Clerics.png"
-	},
-	{
-		"name": "Гномы",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/a/ad/Dwarves.png"
-	},
-	{
-		"name": "Эльфы",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/3/39/Elves.png"
-	},
-	{
-		"name": "Полурослики",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/f/fc/Halflings.png"
-	},
-	{
-		"name": "Маги",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/d/d4/Mages.png"
-	},
-	{
-		"name": "Орки",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/c/c9/Orcs-0.png"
-	},
-	{
-		"name": "Воры",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/8/87/Thieves.png"
-	},
-	{
-		"name": "Воины",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/e/ee/Warriors.png"
-	},
+
 	{
 		"name": "Драконы",
 		"icon": "https://static.wikia.nocookie.net/smashup/images/4/40/Dragons.png"
@@ -163,22 +117,7 @@
 		"name": "Торнадо",
 		"icon": "https://static.wikia.nocookie.net/smashup/images/b/b6/Tornados-0.png"
 	},
-	{
-		"name": "Астро-рыцари",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/5/5f/Astro_Knights.png"
-	},
-	{
-		"name": "Чейнджерботы",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/e/e3/Changerbots.png"
-	},
-	{
-		"name": "Низкопоклонники",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/b/bf/Ignobles.png"
-	},
-	{
-		"name": "Космические странники",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/7/76/Star_Roamers.png"
-	},
+
 	{
 		"name": "Исследователи",
 		"icon": "https://static.wikia.nocookie.net/smashup/images/1/17/Explorers.png"
@@ -196,12 +135,12 @@
 		"icon": "https://static.wikia.nocookie.net/smashup/images/e/e5/Teddy_Bears.png"
 	},
 	{
-		"name": "Itty Critters",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/7/71/Itty_Critters.png"
-	},
-	{
 		"name": "Кайдзю",
 		"icon": "https://static.wikia.nocookie.net/smashup/images/e/ef/Kaiju-0.png"
+	},
+	{
+		"name": "Покемоны",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/7/71/Itty_Critters.png"
 	},
 	{
 		"name": "Магические девушки",
@@ -212,43 +151,47 @@
 		"icon": "https://static.wikia.nocookie.net/smashup/images/f/ff/Mega_Troopers.png"
 	},
 	{
-		"name": "Диско",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/6/61/Disco.png"
+		"name": "Русы",
+		"icon": "https://hobbygames.ru/image/cache/hobbygames_beta/data/-new/hobby-world/zames/rusi-protiv-jashherov/rusi-protiv-yascherow-06-1000x416-wm.jpg"
 	},
 	{
-		"name": "Кунг-фу",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/3/32/Kung_Fu.png"
+		"name": "Ящеры",
+		"icon": "https://hobbygames.ru/image/cache/hobbygames_beta/data/-new/hobby-world/zames/rusi-protiv-jashherov/rusi-protiv-yascherow-07-1000x416-wm.jpg"
 	},
 	{
-		"name": "Тракеры",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/9/9b/Trucker.png"
+		"name": "Скелеты",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/a/ad/Dig_em_Up.jpg"
 	},
 	{
-		"name": "Бдительные",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/c/c7/Vigilante.png"
+		"name": "Сирены/Русалки",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/0/0a/Siren.png"
 	},
 	{
-		"name": "Гики",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/2/20/Geeks.png"
+		"name": "Овцы",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/d/d8/Sheep_Icon.png"
 	},
 	{
-		"name": "All‑Stars",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/6/64/Smash_Up_All_Stars_logo.png"
+		"name": "Футболисты",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/7/70/Mummy.png"
 	},
 	{
-		"name": "Древние египтяне",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/2/2a/Ancient_Egyptians_logo.png"
+		"name": "Ацтеки",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/e/ef/Ancient_Incas_logo.png"
 	},
 	{
-		"name": "Ковбои",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/7/7a/Cowboys_logo.png"
+		"name": "Братья Гримм",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/2/21/Grimm%27s_Fairy_Tales_logo.png"
 	},
 	{
-		"name": "Самураи",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/2/23/Samurai_logo.png"
+		"name": "Мауи",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/6/65/Polynesian_Voyagers_logo.png"
 	},
 	{
-		"name": "Викинги",
-		"icon": "https://static.wikia.nocookie.net/smashup/images/2/2c/Vikings_logo.png"
+		"name": "Пауки",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/9/97/Anansi_Tales_logo.png"
+	},
+	{
+		"name": "Русский фольклер",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/4/47/Russian_Fairy_Tales_logo.png"
 	}
 ]
