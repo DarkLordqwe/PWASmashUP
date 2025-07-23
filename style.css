@@ -1,51 +1,39 @@
-body {
-	font-family: sans-serif;
-	margin: 20px;
-	background-color: #f0f0f0;
-}
-
-h1,
-h2 {
-	color: #333;
-}
-
-ul {
-	list-style: none;
-	padding: 0;
-}
-
-li {
-	background-color: white;
-	margin: 8px 0;
-	padding: 10px;
-	border: 1px solid #ccc;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-button {
-	padding: 5px 10px;
-	background-color: #007acc;
-	border: none;
-	color: white;
-	cursor: pointer;
-	border-radius: 4px;
-}
-
-button:hover {
-	background-color: #005fa3;
-}
-.icon {
-	width: 40px;
-	height: 40px;
-	margin-right: 10px;
-	border-radius: 4px;
-	object-fit: contain;
-}
-li {
+/* Для контейнеров списков */
+#faction-list li,
+#banned-list li,
+#picked-list li {
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	flex-wrap: wrap;
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+}
+
+/* Картинки фракций */
+.icon {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+	border-radius: 5px;
+}
+
+/* Текст фракции */
+.faction-item span {
+	flex-grow: 1;
+	font-weight: 500;
+}
+
+/* Кнопки */
+.faction-item button {
+	margin-left: auto;
+	padding: 5px 10px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.player-summary {
+	padding: 1em;
+	margin: 1em 0;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #f9f9f9;
 }
