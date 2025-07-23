@@ -22,7 +22,8 @@ function renderFactions() {
 			const li = document.createElement('li')
 
 			const icon = document.createElement('img')
-			icon.src = `icons/${faction.name.toLowerCase()}.png`
+			icon.src = faction.icon
+
 			icon.alt = faction.name
 			icon.className = 'icon'
 
@@ -77,8 +78,9 @@ function renderPicked() {
 	picked.forEach(name => {
 		const li = document.createElement('li')
 
+		const faction = factions.find(f => f.name === name)
 		const icon = document.createElement('img')
-		icon.src = `icons/${name.toLowerCase()}.png`
+		icon.src = faction ? faction.icon : ''
 		icon.alt = name
 		icon.className = 'icon'
 
