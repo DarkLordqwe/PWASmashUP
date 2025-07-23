@@ -1,8 +1,32 @@
 [
-	{ "name": "Пираты", "expansion": "Базовый набор" },
-	{ "name": "Динозавры", "expansion": "Базовый набор" },
-	{ "name": "Ниндзя", "expansion": "Базовый набор" },
-	{ "name": "Зомби", "expansion": "Базовый набор" },
-	{ "name": "Инопланетяне", "expansion": "Базовый набор" },
-	{ "name": "Роботы", "expansion": "Базовый набор" }
+	{
+		"name": "Пираты",
+		"expansion": "Базовый набор",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/4/44/Zombies.png/revision/latest/scale-to-width-down/60?cb=20180814122802"
+	},
+	{
+		"name": "Динозавры",
+		"expansion": "Базовый набор",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/4/44/Zombies.png/revision/latest/scale-to-width-down/60?cb=20180814122802"
+	},
+	{
+		"name": "Ниндзя",
+		"expansion": "Базовый набор",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/4/44/Zombies.png/revision/latest/scale-to-width-down/60?cb=20180814122802"
+	},
+	{
+		"name": "Зомби",
+		"expansion": "Базовый набор",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/4/44/Zombies.png/revision/latest/scale-to-width-down/60?cb=20180814122802"
+	},
+	{
+		"name": "Инопланетяне",
+		"expansion": "Базовый набор",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/4/44/Zombies.png/revision/latest/scale-to-width-down/60?cb=20180814122802"
+	},
+	{
+		"name": "Роботы",
+		"expansion": "Базовый набор",
+		"icon": "https://static.wikia.nocookie.net/smashup/images/4/44/Zombies.png"
+	}
 ]

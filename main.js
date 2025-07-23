@@ -22,7 +22,7 @@ function renderFactions() {
 			const li = document.createElement('li')
 
 			const icon = document.createElement('img')
-			icon.src = `icons/${faction.name.toLowerCase()}.png`
+			icon.src = faction.icon
 			icon.alt = faction.name
 			icon.className = 'icon'
 
