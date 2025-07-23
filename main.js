@@ -1,6 +1,5 @@
-let picked = []
 let factions = []
-let banned = []
+
 let currentPlayerIndex = 0
 let totalPlayers = 6
 let playerTurns = []
@@ -60,18 +59,21 @@ setPlayersBtn.onclick = () => {
 	}
 	playerNamesDiv.style.display = 'block'
 }
-
 function renderFactions() {
+	const player = playerTurns[currentPlayerIndex]
+	const allPicked = getAllPicked()
+	const allBanned = getAllBanned()
+
 	factionList.innerHTML = ''
+
 	factions
-		.filter(f => !banned.includes(f.name) && !picked.includes(f.name))
+		.filter(f => !allPicked.includes(f.name) && !allBanned.includes(f.name))
 		.forEach(faction => {
 			const li = document.createElement('li')
 			li.className = 'faction-item'
 
 			const icon = document.createElement('img')
 			icon.src = faction.icon
-
 			icon.alt = faction.name
 			icon.className = 'icon'
 
@@ -81,30 +83,26 @@ function renderFactions() {
 			const banBtn = document.createElement('button')
 			banBtn.textContent = 'Забанить'
 			banBtn.onclick = () => {
-				if (banned.length >= 2) {
-					alert('Можно забанить только 2 фракции.')
+				if (player.banned.length >= 2) {
+					alert('Вы уже забанили 2 фракции.')
 					return
 				}
-				banned.push(faction.name)
+				player.banned.push(faction.name)
 				renderFactions()
 				renderBanned()
-				playerTurns[currentPlayerIndex].banned.push(faction.name)
-				nextPlayer()
 				checkPlayerReady()
 			}
 
 			const pickBtn = document.createElement('button')
 			pickBtn.textContent = 'Пикнуть'
 			pickBtn.onclick = () => {
-				if (picked.length >= 2) {
-					alert('Можно выбрать только 2 фракции.')
+				if (player.picked.length >= 2) {
+					alert('Вы уже выбрали 2 фракции.')
 					return
 				}
-				picked.push(faction.name)
+				player.picked.push(faction.name)
 				renderFactions()
 				renderPicked()
-				playerTurns[currentPlayerIndex].picked.push(faction.name)
-				nextPlayer()
 				checkPlayerReady()
 			}
 
@@ -116,11 +114,11 @@ function renderFactions() {
 		})
 }
 function renderBanned() {
+	const player = playerTurns[currentPlayerIndex]
 	bannedList.innerHTML = ''
-	banned.forEach(name => {
+	player.banned.forEach(name => {
 		const li = document.createElement('li')
 		li.className = 'faction-item'
-
 		const faction = factions.find(f => f.name === name)
 
 		const icon = document.createElement('img')
@@ -134,7 +132,7 @@ function renderBanned() {
 		const btn = document.createElement('button')
 		btn.textContent = 'Разбанить'
 		btn.onclick = () => {
-			banned = banned.filter(n => n !== name)
+			player.banned = player.banned.filter(n => n !== name)
 			renderFactions()
 			renderBanned()
 		}
@@ -147,13 +145,14 @@ function renderBanned() {
 }
 
 function renderPicked() {
+	const player = playerTurns[currentPlayerIndex]
 	const pickedList = document.getElementById('picked-list')
 	pickedList.innerHTML = ''
-	picked.forEach(name => {
+	player.picked.forEach(name => {
 		const li = document.createElement('li')
 		li.className = 'faction-item'
-
 		const faction = factions.find(f => f.name === name)
+
 		const icon = document.createElement('img')
 		icon.src = faction ? faction.icon : ''
 		icon.alt = name
@@ -165,7 +164,7 @@ function renderPicked() {
 		const removeBtn = document.createElement('button')
 		removeBtn.textContent = 'Убрать'
 		removeBtn.onclick = () => {
-			picked = picked.filter(n => n !== name)
+			player.picked = player.picked.filter(n => n !== name)
 			renderFactions()
 			renderPicked()
 		}
@@ -178,6 +177,9 @@ function renderPicked() {
 }
 function nextPlayer() {
 	currentPlayerIndex = (currentPlayerIndex + 1) % totalPlayers
+	console.log(
+		`➡️ Ход переходит к игроку: ${playerTurns[currentPlayerIndex].name}`
+	)
 	updatePlayerLabel()
 	renderFactions()
 	renderBanned()
@@ -185,18 +187,9 @@ function nextPlayer() {
 }
 
 function updatePlayerLabel() {
-	const currentPlayerLabel = document.getElementById('current-player')
-	if (currentPlayerLabel) {
-		currentPlayerLabel.textContent = `Ход игрока: ${playerTurns[currentPlayerIndex].name}`
-	}
-}
-function checkPlayerReady() {
-	const player = playerTurns[currentPlayerIndex]
-
-	if (player.picked.length >= 2 && player.banned.length >= 2) {
-		alert(`Игрок ${player.name} завершил свой ход`)
-		nextPlayer()
-		checkAllPlayersReady()
+	const label = document.getElementById('current-player')
+	if (label && playerTurns[currentPlayerIndex]) {
+		label.textContent = `Ход игрока: ${playerTurns[currentPlayerIndex].name}`
 	}
 }
 function checkAllPlayersReady() {
@@ -206,6 +199,14 @@ function checkAllPlayersReady() {
 
 	if (allReady) {
 		showResults()
+	}
+}
+function checkPlayerReady() {
+	const player = playerTurns[currentPlayerIndex]
+	if (player.picked.length >= 2 && player.banned.length >= 2) {
+		console.log(`✅ Игрок ${player.name} завершил ход`)
+		nextPlayer()
+		checkAllPlayersReady()
 	}
 }
 function showResults() {
@@ -238,10 +239,16 @@ function showResults() {
 		container.appendChild(block)
 	})
 }
+function getAllPicked() {
+	return playerTurns.flatMap(player => player.picked)
+}
 
-///
-///if ('serviceWorker' in navigator) {
-//navigator.serviceWorker
-//		.register('service-worker.js')
-///		.then(() => console.log('Service Worker registered'))
-///}
+function getAllBanned() {
+	return playerTurns.flatMap(player => player.banned)
+}
+
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker
+		.register('service-worker.js')
+		.then(() => console.log('Service Worker registered'))
+}
