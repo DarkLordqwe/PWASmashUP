@@ -4,24 +4,40 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Smash Up Picker</title>
+		<link rel="manifest" href="manifest.json" />
+		<meta name="theme-color" content="#000000" />
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<h1>Выбор фракций — Smash Up</h1>
+		<div id="menu">
+			<h2>Настройка игроков</h2>
+			<label for="player-count">Количество игроков:</label>
+			<input type="number" id="player-count" min="2" max="6" value="2" />
+			<button id="set-players">Далее</button>
 
-		<section>
-			<h2>Все фракции</h2>
+			<div id="player-names" style="display: none">
+				<h3>Введите имена игроков в нужном порядке</h3>
+				<div id="player-inputs"></div>
+				<button id="start-game">Начать игру</button>
+			</div>
+		</div>
+		<div id="game" style="display: none">
+			<h2 id="current-player"></h2>
+
+			<h2>Фракции</h2>
 			<ul id="faction-list"></ul>
-		</section>
 
-		<section>
-			<h2>Забаненные фракции</h2>
+			<h2>Забаненные</h2>
 			<ul id="banned-list"></ul>
-		</section>
-		<section>
-			<h2>Выбранные фракции</h2>
+
+			<h2>Выбранные</h2>
 			<ul id="picked-list"></ul>
-		</section>
+		</div>
+		<div id="results" style="display: none">
+			<h2>Результаты</h2>
+			<div id="results-container"></div>
+		</div>
+
 		<script src="main.js"></script>
 	</body>
 </html>
