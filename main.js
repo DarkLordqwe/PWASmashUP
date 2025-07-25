@@ -247,9 +247,9 @@ function getAllBanned() {
 	return playerTurns.flatMap(player => player.banned)
 }
 
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker
-		.register('service-worker.js')
-		.then(() => console.log('✅ Service Worker зарегистрирован'))
-		.catch(err => console.error('❌ Ошибка регистрации SW:', err))
-}
+// if ('serviceWorker' in navigator) {
+// 	navigator.serviceWorker
+// 		.register('service-worker.js')
+// 		.then(() => console.log('✅ Service Worker зарегистрирован'))
+// 		.catch(err => console.error('❌ Ошибка регистрации SW:', err))
+// }

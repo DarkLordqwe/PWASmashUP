@@ -1,0 +1,3 @@
+export const SMASHUP_MIN_PLAYERS = 1
+export const SMASHUP_MAX_PLAYERS = 6
+export const SMASHUP_FACTIONS_LENGTH = 4
