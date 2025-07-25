@@ -276,4 +276,4 @@ function checkPhasesCompletion() {
 	}
 }
 
-export { updateUI, nextPlayer, resetPlayerTurn }
+export { updateUI, nextPlayer, resetPlayerTurn, canPick, canBan }
