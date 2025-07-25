@@ -92,7 +92,7 @@ function renderPlayers() {
       </div>
       <div class="player-factions">
         <div class="faction-group picked">
-          <h4><i class="fas fa-check-circle"></i> Выбранные фракции</h4>
+          <h4><i class="fas fa-check-circle"></i> Выбранные <br /> фракции</h4>
           <ul>
             ${renderFactionsList(user.picks)}
           </ul>
