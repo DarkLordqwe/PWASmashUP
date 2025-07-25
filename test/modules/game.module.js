@@ -4,9 +4,11 @@ import {
 	users,
 	loopPlayer,
 	resetPlayerIndex,
+	renderPlayers,
 } from './players.module.js'
 import { factions, factionsInDraft, renderFactions } from './factions.module.js'
 import { SELECTED_FACTION_TEMPLATE } from '../templates.js'
+import { endgameStage, setNewStage } from './stages.module.js'
 
 const currentPlayerName = document.getElementById('current-username')
 const pickedList = document.getElementById('picked-list')
@@ -25,6 +27,7 @@ let phase = PHASES.PICK_1
 let lastSelectedFaction = null
 
 next.addEventListener('click', () => {
+	if (!lastSelectedFaction) return
 	nextPlayer()
 })
 
@@ -64,32 +67,50 @@ factionsContainer.addEventListener('click', e => {
 	}
 })
 pickedList.addEventListener('click', e => {
-	const factionItem = e.target.closest('[data-item-id]')
+	if (!lastSelectedFaction) return
+
+	const factionItem = e.target.closest('[data-item-id], [data-id]')
 	if (!factionItem) return
 
 	const factionName = factionItem.dataset.itemId || factionItem.dataset.id
+	if (!factionName) return
 
 	const faction = factions.find(f => f.name === factionName)
-	if (faction) {
-		if (faction.name === lastSelectedFaction.name) {
-			backFaction(faction)
-			const player = currentPlayer()
-			const factionIndex = player.picks.findIndex(p => p.name === faction.name)
+	if (!faction) return
 
-			if (factionIndex !== -1) {
-				player.picks.splice(factionIndex, 1)
-				renderSelectedPickedFactions()
-			}
-		}
-	}
+	if (!faction || faction.name !== lastSelectedFaction.name) return
+
+	backFaction(faction)
+})
+
+bannedList.addEventListener('click', e => {
+	if (!lastSelectedFaction) return
+
+	const factionItem = e.target.closest('[data-item-id], [data-id]')
+	if (!factionItem) return
+
+	const factionName = factionItem.dataset.itemId || factionItem.dataset.id
+	if (!factionName) return
+
+	const faction = factions.find(f => f.name === factionName)
+	if (!faction) return
+
+	if (!faction || faction.name !== lastSelectedFaction.name) return
+
+	backFaction(faction)
 })
 
 function pickFaction(faction) {
 	if (!canPick()) return
+
+	if (currentPlayer().picks.some(p => p.name === faction.name)) {
+		alert('Эта фракция уже выбрана!')
+		return
+	}
 	currentPlayer().picks.push(faction)
 	lastSelectedFaction = faction
-	removeFaction(faction)
-	renderSelectedPickedFactions()
+	removeFactionFromDraft(faction)
+	renderUI()
 }
 
 function banFaction(faction) {
@@ -98,8 +119,15 @@ function banFaction(faction) {
 		alert('Все игроки должны выбрать две фракции')
 		return
 	} else {
+		if (currentPlayer().bans.some(p => p.name === faction.name)) {
+			alert('Эта фракция уже забанена!')
+			return
+		}
 		currentPlayer().bans.push(faction)
 		lastSelectedFaction = faction
+		removeFactionFromDraft(faction)
+
+		renderUI()
 	}
 }
 
@@ -110,6 +138,93 @@ function canPick() {
 function canBan() {
 	return phase === PHASES.BAN_2 || phase === PHASES.BAN_1
 }
+
+function nextPlayer() {
+	lastSelectedFaction = null
+	loopPlayer()
+	updateUI()
+	checkPhasesCompletion()
+	renderUI()
+}
+
+function resetPlayerTurn() {
+	resetPlayerIndex()
+	updateUI()
+}
+
+function updateUI() {
+	currentPlayerName.textContent = currentPlayer().username
+}
+
+function renderUI() {
+	renderSelectedPickedFactions()
+	renderSelectedBannedFactions()
+	renderFactions()
+}
+
+function renderSelectedPickedFactions() {
+	pickedList.innerHTML = ''
+	let HTML = ''
+	for (let i = 0; i < currentPlayer().picks.length; i++) {
+		HTML += SELECTED_FACTION_TEMPLATE(currentPlayer().picks[i])
+	}
+
+	pickedList.insertAdjacentHTML('beforeend', HTML)
+}
+function renderSelectedBannedFactions() {
+	bannedList.innerHTML = ''
+	let HTML = ''
+	for (let i = 0; i < currentPlayer().bans.length; i++) {
+		HTML += SELECTED_FACTION_TEMPLATE(currentPlayer().bans[i])
+	}
+
+	bannedList.insertAdjacentHTML('beforeend', HTML)
+}
+
+function removeFactionFromDraft(faction) {
+	if (!faction || !currentPlayer()) return
+
+	const index = factionsInDraft.findIndex(p => p.name === faction.name)
+
+	if (index !== -1) {
+		factionsInDraft.splice(index, 1)
+		renderFactions()
+		renderSelectedPickedFactions()
+	}
+}
+
+function backFaction(faction) {
+	if (!faction || !currentPlayer()) return
+	if (!lastSelectedFaction || faction.name !== lastSelectedFaction.name) return
+
+	const player = currentPlayer()
+	let removed = false
+
+	const pickIndex = player.picks.findIndex(p => p.name === faction.name)
+	if (pickIndex !== -1) {
+		player.picks.splice(pickIndex, 1)
+		if (!factionsInDraft.some(f => f.name === faction.name)) {
+			factionsInDraft.push(faction)
+		}
+		removed = true
+	}
+
+	const banIndex = player.bans.findIndex(b => b.name === faction.name)
+	if (banIndex !== -1) {
+		player.bans.splice(banIndex, 1)
+		if (!factionsInDraft.some(f => f.name === faction.name)) {
+			factionsInDraft.push(faction)
+		}
+		removed = true
+	}
+
+	if (removed) {
+		lastSelectedFaction = null
+		renderUI()
+	}
+	console.log(factionsInDraft)
+}
+
 function checkUserMove() {
 	if (!users.length) return false
 
@@ -151,83 +266,14 @@ function checkPhasesCompletion() {
 		case PHASES.BAN_2:
 			if (users.every(user => user.bans?.length === 2)) {
 				phase = PHASES.COMPLETED
+				setNewStage(endgameStage)
+				renderPlayers()
 			}
 			break
 
 		default:
 			break
 	}
-}
-
-function nextPlayer() {
-	lastSelectedFaction = null
-	loopPlayer()
-	updateUI()
-	checkPhasesCompletion()
-	renderSelectedPickedFactions()
-}
-
-function resetPlayerTurn() {
-	resetPlayerIndex()
-	updateUI()
-}
-
-function updateUI() {
-	currentPlayerName.textContent = currentPlayer().username
-}
-
-function renderSelectedPickedFactions() {
-	pickedList.innerHTML = ''
-	let HTML = ''
-	for (let i = 0; i < currentPlayer().picks.length; i++) {
-		HTML += SELECTED_FACTION_TEMPLATE(currentPlayer().picks[i])
-	}
-
-	pickedList.insertAdjacentHTML('beforeend', HTML)
-}
-
-function removeFaction(faction) {
-	if (!faction || !currentPlayer()) return
-
-	const index = factionsInDraft.findIndex(p => p.name === faction.name)
-
-	if (index !== -1) {
-		factionsInDraft.splice(index, 1)
-		renderFactions()
-		renderSelectedPickedFactions()
-	}
-}
-
-function backFaction(faction) {
-	if (!faction || !currentPlayer()) return
-
-	const player = currentPlayer()
-	let removed = false
-
-	const pickIndex = player.picks.findIndex(
-		p => p.id === faction.id || p.name === faction.name
-	)
-	if (pickIndex !== -1) {
-		player.picks.splice(pickIndex, 1)
-		factionsInDraft.push(faction)
-		removed = true
-	}
-
-	const banIndex = player.bans.findIndex(
-		b => b.id === faction.id || b.name === faction.name
-	)
-	if (banIndex !== -1) {
-		player.bans.splice(banIndex, 1)
-		factionsInDraft.push(faction)
-		removed = true
-	}
-
-	if (removed) {
-		renderFactions()
-		renderSelectedPickedFactions()
-		// renderBannedFactions()
-	}
-	console.log(factionsInDraft)
 }
 
 export { updateUI, nextPlayer, resetPlayerTurn }

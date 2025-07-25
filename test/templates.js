@@ -4,7 +4,7 @@ export const USERNAME_INPUT_TEMPLATE = number => {
 						<label for="player-count">
 							<i class="fas fa-user-friends"></i> Игрок ${number}:
 						</label>
-						<input type="text" class='username-input' data-player-index="${number}" />
+						<input type="text" class='username-input' value="player ${number}" data-player-index="${number}" />
 					</div>
   `
 }
