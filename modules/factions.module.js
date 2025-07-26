@@ -261,6 +261,8 @@ function addFactionToDraft(faction) {
 		return
 	}
 	factionsInDraft.push(faction)
+	faction.classList.add('active')
+
 	currentDraftLength.textContent = factionsInDraft.length
 }
 
@@ -273,6 +275,7 @@ function removeFactionFromDraft(faction) {
 
 	currentDraftLength.textContent = factionsInDraft.length
 
+	faction.classList.remove('active')
 	return true
 }
 factionGridPlace.addEventListener('click', e => {
@@ -286,10 +289,8 @@ factionGridPlace.addEventListener('click', e => {
 	const existingFaction = factionsInDraft.find(f => f.name === newFaction.name)
 	if (existingFaction) {
 		removeFactionFromDraft(newFaction)
-		faction.classList.remove('active')
 	} else {
 		addFactionToDraft(newFaction)
-		faction.classList.add('active')
 	}
 })
 
