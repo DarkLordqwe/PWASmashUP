@@ -10,7 +10,7 @@ const factionsContainer = document.querySelector('.factions-container')
 
 const currentDraftLength = document.getElementById('current-draft-length')
 
-fetch('../../factions.json')
+fetch('../factions.json')
 	.then(res => res.json())
 	.then(data => {
 		factions = data
