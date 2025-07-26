@@ -587,3 +587,9 @@ header {
 		width: 100%;
 	}
 }
+.faction-group li span {
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
