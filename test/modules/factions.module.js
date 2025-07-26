@@ -9,9 +9,7 @@ const factionGridPlace = document.querySelector('.factions-grid')
 const factionsContainer = document.querySelector('.factions-container')
 
 const currentDraftLength = document.getElementById('current-draft-length')
-const maxDraftLength = document.getElementById('max-draft-length')
 
-maxDraftLength.textContent = SMASHUP_FACTIONS_LENGTH
 fetch('../../factions.json')
 	.then(res => res.json())
 	.then(data => {

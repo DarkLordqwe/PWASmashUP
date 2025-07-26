@@ -19,6 +19,8 @@ const setPlayersButton = document.getElementById('set-players')
 const setUsernamesButton = document.getElementById('set-usernames')
 const usersInputPlace = document.querySelector('.users-input-place')
 
+const maxDraftLength = document.getElementById('max-draft-length')
+
 let playersCount
 let users = []
 const currentPlayer = () => users[currentPlayerIndex]
@@ -68,6 +70,7 @@ setPlayersButton.addEventListener('click', () => {
 setUsernamesButton.addEventListener('click', () => {
 	if (setUsers()) {
 		setFactionDraftLength(users.length * 4)
+		maxDraftLength.textContent = users.length * 4
 		setNewStage(pickFactionsStage)
 		renderFactionsGrid()
 	}
