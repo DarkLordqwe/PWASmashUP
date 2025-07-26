@@ -258,12 +258,12 @@ let factionsInDraft = []
 function addFactionToDraft(faction) {
 	if (factionsInDraft.length + 1 > SMASHUP_FACTIONS_LENGTH) {
 		alert('Вы уже выбрали максимальное количество фракций')
-		return
+		return false
 	}
 	factionsInDraft.push(faction)
-	faction.classList.add('active')
 
 	currentDraftLength.textContent = factionsInDraft.length
+	return true
 }
 
 function removeFactionFromDraft(faction) {
@@ -275,7 +275,6 @@ function removeFactionFromDraft(faction) {
 
 	currentDraftLength.textContent = factionsInDraft.length
 
-	faction.classList.remove('active')
 	return true
 }
 factionGridPlace.addEventListener('click', e => {
@@ -288,9 +287,11 @@ factionGridPlace.addEventListener('click', e => {
 	const newFaction = factions.find(f => f.name === factionData.text)
 	const existingFaction = factionsInDraft.find(f => f.name === newFaction.name)
 	if (existingFaction) {
-		removeFactionFromDraft(newFaction)
+		const res = removeFactionFromDraft(newFaction)
+		if (res) faction.classList.remove('active')
 	} else {
-		addFactionToDraft(newFaction)
+		const res = addFactionToDraft(newFaction)
+		if (res) faction.classList.add('active')
 	}
 })
 
