@@ -1,4 +1,10 @@
-import { hide, show } from '../helpers.js'
+export function show(element) {
+	element.style.display = 'block'
+}
+
+export function hide(element) {
+	element.style.display = 'none'
+}
 
 const playerCountStage = document.getElementById('player-count-stage')
 const playerNamesStage = document.getElementById('player-names-stage')
