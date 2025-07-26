@@ -593,3 +593,8 @@ header {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+.player-card {
+	width: 100%;
+	max-width: 500px;
+	overflow: hidden;
+}
