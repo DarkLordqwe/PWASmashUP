@@ -7,7 +7,6 @@ const urlsToCache = [
 	'/manifest.json',
 	'/icon-192.png',
 	'/icon-512.png',
-	'/factions.json',
 	'/constants.js',
 	'/templates.js',
 	'/helpers.js',
@@ -15,6 +14,7 @@ const urlsToCache = [
 	'/modules/factions.module.js',
 	'/modules/players.module.js',
 	'/modules/game.module.js',
+	'/modules/factions.json',
 ]
 
 // Установка service worker и кэширование файлов
