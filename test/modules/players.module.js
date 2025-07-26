@@ -1,4 +1,8 @@
-import { SMASHUP_MIN_PLAYERS, SMASHUP_MAX_PLAYERS } from '../constants.js'
+import {
+	SMASHUP_MIN_PLAYERS,
+	SMASHUP_MAX_PLAYERS,
+	setFactionDraftLength,
+} from '../constants.js'
 
 import {
 	pickFactionsStage,
@@ -63,6 +67,7 @@ setPlayersButton.addEventListener('click', () => {
 })
 setUsernamesButton.addEventListener('click', () => {
 	if (setUsers()) {
+		setFactionDraftLength(users.length * 4)
 		setNewStage(pickFactionsStage)
 		renderFactionsGrid()
 	}
@@ -98,7 +103,7 @@ function renderPlayers() {
           </ul>
         </div>
         <div class="faction-group banned">
-          <h4><i class="fas fa-ban"></i> Забаненные фракции</h4>
+          <h4><i class="fas fa-ban"></i> Забаненные <br /> фракции</h4>
           <ul>
             ${renderFactionsList(user.bans)}
           </ul>
