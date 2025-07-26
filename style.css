@@ -577,3 +577,13 @@ header {
 .fas.fa-ban {
 	color: #ef5350;
 }
+@media (max-width: 500px) {
+	.player-factions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.faction-group {
+		width: 100%;
+	}
+}
