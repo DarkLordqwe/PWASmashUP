@@ -3,41 +3,115 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Smash Up Picker</title>
+		<title>SmashUp Deck Selector</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="style.css" />
 		<link rel="manifest" href="manifest.json" />
 		<meta name="theme-color" content="#000000" />
-		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div id="menu">
-			<h2>Настройка игроков</h2>
-			<label for="player-count">Количество игроков:</label>
-			<input type="number" id="player-count" min="2" max="6" value="2" />
-			<button id="set-players">Далее</button>
+		<div class="decoration card-decoration"></div>
+		<div class="decoration card-decoration"></div>
 
-			<div id="player-names">
-				<h3>Введите имена игроков в нужном порядке</h3>
-				<div id="player-inputs"></div>
-				<button id="start-game">Начать игру</button>
+		<div class="container">
+			<header>
+				<div class="logo">SMASHUP</div>
+			</header>
+
+			<div class="game-phases">
+				<div class="phase">Количество игроков</div>
+				<div class="phase">Настройка игроков</div>
+				<div class="phase">Выбор фракций</div>
+				<div class="phase">Драфты фракций</div>
+				<div class="phase">Начать игру</div>
+			</div>
+
+			<div class="content-section" id="player-count-stage">
+				<div class="player-setup">
+					<h2><i class="fas fa-users"></i> Настройка игроков</h2>
+
+					<div class="input-group">
+						<label for="player-count">
+							<i class="fas fa-user-friends"></i> Количество игроков (2-6):
+						</label>
+						<input type="number" id="player-count" min="0" max="6" value="1" />
+					</div>
+
+					<button id="set-players" class="btn pulse">
+						<i class="fas fa-arrow-right"></i> Далее
+					</button>
+				</div>
+			</div>
+			<div class="content-section" id="player-names-stage">
+				<div class="player-setup">
+					<h2><i class="fas fa-users"></i> Имена игроков</h2>
+					<div class="users-input-place"></div>
+
+					<button class="btn pulse" id="set-usernames">
+						<i class="fas fa-arrow-right"></i> Далее
+					</button>
+				</div>
+			</div>
+			<div class="content-section" id="pick-factions-stage">
+				<div class="player-setup">
+					<h2><i class="fas fa-cards"></i> Выбор фракций</h2>
+					<p style="text-align: center; margin-bottom: 20px; color: #a0a0d0">
+						Выберите до 7 фракций среди которых будет происходить драфт:
+						<span id="current-draft-length">0</span>/<span id="max-draft-length"
+							>7</span
+						>
+					</p>
+					<button class="btn pulswie" id="set-drafts">
+						<i class="fas fa-arrow-right"></i> Далее
+					</button>
+				</div>
+				<div class="factions-grid"></div>
+			</div>
+			<div class="content-section" id="pick-ban-stage">
+				<div class="player-setup">
+					<h2><i class="fas fa-cards"></i> Выбор фракций</h2>
+					<p style="text-align: center; margin-bottom: 20px; color: #a0a0d0">
+						Каждый игрок должен выбрать 2 фракции. Выберите из списка ниже:
+					</p>
+				</div>
+
+				<div class="factions-container"></div>
+			</div>
+			<div class="content-section" id="endgame-stage">
+				<div class="player-setup" id="players-container">
+					<h2><i class="fas fa-cards"></i> Результаты</h2>
+					<p style="text-align: center; margin-bottom: 20px; color: #a0a0d0">
+						Ваша игра будет проходить с таким набором фракций:
+					</p>
+				</div>
 			</div>
 		</div>
-		<div id="game">
-			<h2 id="current-player"></h2>
-
-			<h2>Фракции</h2>
-			<ul id="faction-list" class="list"></ul>
-
-			<h2>Забаненные</h2>
-			<ul id="banned-list" class="list"></ul>
-
-			<h2>Выбранные</h2>
-			<ul id="picked-list" class="list"></ul>
+		<div class="player-setup picked-factions" id="pick-menu">
+			<span
+				>Очередь:
+				<h3 id="current-username">
+					<i class="fas fa-check-circle"></i></h3
+			></span>
+			<div class="selected-factions">
+				<div class="selected-factions-inside" id="picked-list">
+					<span>Пики: </span>
+				</div>
+				<div class="selected-factions-inside" id="banned-list">
+					<span>Баны: </span>
+				</div>
+			</div>
+			<button class="btn start-game-btn" id="next">
+				<i class="fas fa-play"></i> Продолжить
+			</button>
 		</div>
-		<div id="results">
-			<h2>Результаты</h2>
-			<div id="results-container"></div>
-		</div>
-
-		<!-- <script src="main.js"></script> -->
+		<script type="module" src="./modules/game.module.js"></script>
+		<script type="module" src="./modules/stages.module.js"></script>
+		<script type="module" src="./modules/factions.module.js"></script>
+		<script type="module" src="./modules/players.module.js"></script>
+		<script type="module" src="./helpers.js"></script>
+		<script type="module" src="./core.js"></script>
 	</body>
 </html>

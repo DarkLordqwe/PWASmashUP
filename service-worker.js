@@ -3,11 +3,18 @@ const urlsToCache = [
 	'/',
 	'/index.html',
 	'/style.css',
-	'/main.js',
+	'/core.js',
 	'/manifest.json',
 	'/icon-192.png',
 	'/icon-512.png',
 	'/factions.json',
+	'/constants.js',
+	'/templates.js',
+	'/helpers.js',
+	'/modules/stages.module.js',
+	'/modules/factions.module.js',
+	'/modules/players.module.js',
+	'/modules/game.module.js',
 ]
 
 // Установка service worker и кэширование файлов

@@ -1,4 +1,4 @@
-import { hide, show } from '../helpers.js'
+import { hide, show } from '../../helpers.js'
 
 const playerCountStage = document.getElementById('player-count-stage')
 const playerNamesStage = document.getElementById('player-names-stage')
