@@ -62,10 +62,11 @@ setPlayersButton.addEventListener('click', () => {
 		playersCount <= SMASHUP_MAX_PLAYERS
 	) {
 		setNewStage(playerNamesStage)
+		renderUsersInputPlace()
 	} else {
 		alert('Неверное количество игроков')
+		users = []
 	}
-	renderUsersInputPlace()
 })
 setUsernamesButton.addEventListener('click', () => {
 	if (setUsers()) {
