@@ -598,3 +598,19 @@ header {
 	max-width: 500px;
 	overflow: hidden;
 }
+@media (max-width: 600px) {
+	.player-factions {
+		flex-direction: column;
+	}
+
+	.faction-group {
+		width: 100%;
+	}
+}
+.faction-group li {
+	flex-shrink: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
