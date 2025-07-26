@@ -606,8 +606,21 @@ header {
 	.faction-group {
 		width: 100%;
 	}
+	.selected-factions {
+		flex-direction: column;
+	}
+	.selected-faction {
+		width: 100%;
+	}
 }
 .faction-group li {
+	flex-shrink: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.selected-factions-inside {
 	flex-shrink: 1;
 	min-width: 0;
 	overflow: hidden;
